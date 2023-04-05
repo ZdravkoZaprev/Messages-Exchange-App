@@ -15,15 +15,25 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class UserController extends  AbstractController
 {
-    /**
-     * @Route("/api/login", methods={"POST"})
-     */
-    public function login(
-        Request $request,
+    private EntityManagerInterface $entityManager;
+    private UserPasswordHasherInterface $passwordEncoder;
+    private JWTTokenManagerInterface $jwtManager;
+
+    public function __construct(
         EntityManagerInterface $entityManager,
         UserPasswordHasherInterface $passwordEncoder,
         JWTTokenManagerInterface $jwtManager
-    ): Response {
+    ) {
+        $this->entityManager = $entityManager;
+        $this->passwordEncoder = $passwordEncoder;
+        $this->jwtManager = $jwtManager;
+    }
+
+    /**
+     * @Route("/api/login", methods={"POST"})
+     */
+    public function login(Request $request): Response
+    {
         // Retrieve user input from request body
         $input = json_decode($request->getContent(), true);
         $email = $input['email'];
@@ -35,18 +45,18 @@ class UserController extends  AbstractController
         }
 
         // Find user by email
-        $user = $entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
+        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
         if (!$user) {
             return new JsonResponse(['error' => 'Invalid credentials'], Response::HTTP_UNAUTHORIZED);
         }
 
-        $isPasswordValid = $passwordEncoder->isPasswordValid($user, $password);
+        $isPasswordValid = $this->passwordEncoder->isPasswordValid($user, $password);
         if (!$isPasswordValid) {
             return new JsonResponse(['error' => 'Invalid credentials'], Response::HTTP_UNAUTHORIZED);
         }
 
         // Generate JWT token
-        $token = $jwtManager->create($user);
+        $token = $this->jwtManager->create($user);
 
         // Return success response with token
         return new Response($token, Response::HTTP_OK);
@@ -57,8 +67,6 @@ class UserController extends  AbstractController
      */
     public function register(
         Request $request,
-        EntityManagerInterface $entityManager,
-        UserPasswordHasherInterface $passwordEncoder,
         RabbitMQService $rabbitMQService
     ): Response {
         $input = json_decode($request->getContent(), true);
@@ -73,7 +81,7 @@ class UserController extends  AbstractController
         }
 
         // Check if  email already exist
-        $user = $entityManager->getRepository(User::class)->findOneBy([
+        $user = $this->entityManager->getRepository(User::class)->findOneBy([
             'email' => $email,
         ]);
 
@@ -87,12 +95,12 @@ class UserController extends  AbstractController
         $user->setFirstName($firstName);
         $user->setLastName($lastName);
         // Encrypt user password
-        $encodedPassword = $passwordEncoder->hashPassword($user, $password);
+        $encodedPassword = $this->passwordEncoder->hashPassword($user, $password);
         $user->setPassword($encodedPassword);
 
         // Save user to database
-        $entityManager->persist($user);
-        $entityManager->flush();
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
 
         // Send message to RabbitMQ
         $message = [
@@ -111,10 +119,10 @@ class UserController extends  AbstractController
     /**
      * @Route("/api/search/{term}", methods={"POST"})
      */
-    public function search(string $term, EntityManagerInterface $entityManager): JsonResponse
+    public function search(string $term): JsonResponse
     {
         // Search for users that match the given search term
-        $users = $entityManager->getRepository(User::class)->findyByTerm($term);
+        $users = $this->entityManager->getRepository(User::class)->findyByTerm($term);
 
         $data = array_map(function (User $user) {
             return [
