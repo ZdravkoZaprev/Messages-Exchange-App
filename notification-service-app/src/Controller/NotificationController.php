@@ -45,10 +45,10 @@ class NotificationController extends AbstractController
     {
         // Retrieve the request body as an array
         $data = json_decode($request->getContent(), true);
-        $createdNotification = $this->notificationService->createNotification($data);
+        $notificationResult = $this->notificationService->createNotification($data);
 
         // Return a success response
-        return $this->json(['success' => true, 'notification' => $createdNotification]);
+        return $this->json($notificationResult);
     }
 
     /**

@@ -47,7 +47,7 @@ class NotificationService
         ];
     }
 
-    public function createNotification(array $data): Notification
+    public function createNotification(array $data)
     {
         if (!isset($data['text']) || empty(trim($data['text']))) {
             return ['success' => false, 'result' => "Notification text cannot be empty"];
