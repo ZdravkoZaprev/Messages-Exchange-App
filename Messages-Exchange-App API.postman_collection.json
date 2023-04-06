@@ -1,0 +1,381 @@
+{
+	"info": {
+		"_postman_id": "9578f296-3a93-4745-a7ec-4663c7f149df",
+		"name": "Messages-Exchange-App API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "[Main-app] - Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"test2@abv.bg\",\r\n    \"firstName\": \"test\",\r\n    \"lastName\": \"testov\",\r\n    \"password\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Main-app] - Login",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "test2@abv.bg",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Main-app] - Search users",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "test2@abv.bg",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/search/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"search",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Main-app] - Get Notifications",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "test2@abv.bg",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODA2ODE1MDUsImV4cCI6MTY4MDY4NTEwNSwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidGVzdEBhYnYuYmcifQ.JZLzbE2o0ZTYjJCFwnt_J1LsGdHbOGc9aUgTxm7kMPJ5DBGdTQYLn9G4EaZ3hOqS7Y6VlCpVn5MFxCKl-X5tQeew0ufxSSUXDPNyP47gjRAcMTSF-YUvVPiIpfDsSK9ySkSTtK2gQ7s-sJ_hP8fP8J6Esmf251D5CL3P60nTqCwptE-V-JpzQTDye5tV0Va2k6oUhcWiUqVEOgHQJ4wrXw-MHCvcyneRjxpHteXTRhGgvM4Y6FhGae3ps1DRV4Ety8QC4ELXzRytu4mwiHwoIh1IKlaLRkJG2sCRaMTOx7Rwmra_iw6oO5UshZrzCxMcxu4f6bkXF4r3WRapJCqyMNiKEOx3PcloaPZ-CfkyJ7eix-DDviEFsjjilyKhrrtjRYsMmnfH7mvc8iGZu7PHODpKMQvd4WYflRFHVcq3NnDoT-EdnI2519F9luVmXmbDawkrsCQ9wdvATI7dlX5fB5phtE2Z3AlPus2KmeTGgrJ2Re5Rvu8BJA9743f1qKnhI6F-zopA_0BvCUD3YQqTjsO-4hfM4zm_g7UY6RXXie2lCyFYSM-Fwfv3Yf4w-nWnj-4tilZ_urtGeqpWJ8mglwv9v6y3G6Lq5FfaB35ucFtsxsiVBJlfjgHhqUzvvEPzBXLkmsCPThc6ovfRfrrEeAThwIqV9LrAxlKhcakCopM",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/notifications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"notifications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Main-app] - Send Notification",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "test2@abv.bg",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\": \"Test POSTMAN MESSAGE (POST)\",\r\n    \"to\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/notification",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"notification"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Main-app] - Patch Notification",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "test2@abv.bg",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/notification/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"notification",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Notification-app] - Get Notifications (Token)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODA3OTMyNTUsImV4cCI6MTY4MDc5Njg1NSwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidGVzdDJAYWJ2LmJnIn0.rCN7gYUNsr58uoDduLYMP-cXgpVtFdzBow8aqx71uU_uwTcrhEwpgCHT6bsYOLtBFVxEkAlCP9DxWBQbbK4NuW8pZ4CXSbozn_VIE3YyO4E2V4xAbiNvHpEBshmKtf2RnbjSDdMCXvTMSAvg7mDz1ZeKLlFcIg5aw288FvxhGP5IZZeqrE9K32j4bLSABZaVpC1OJWv8LGocd0IsPLER1vJYqWfEVEFmh_NDbrYaMKx_ZlbvMHQtegh9Rv1gHU-z9U5xokvDCrOybFBfAyenI39wuK8Bi2j9yHTDe0rdx_qoWMuWRgUUYQIjyyNh_-gijt_Aw78ktA4kwD3YvfbwpfTXBpegakbYSPH7owpXoiZYRcjublcK8bIkhjMk0LiABrMXKu35RK7PhpMjSZrUVqEARfoxiNl--i18n5xvJUFQlRmY5Fsj9CgPCawjI7YQfw3xdZq0zCpJ1m8owZj6U-P3k4GMW7sSCr1LIYw3jRxcF9zrakF_3KARdDPiCBeGLLQnSSW3Pv31aX3XSM55UVu3o-zU8asshfmJh_pyKeI_SSE0vUsTJHc66AtwDdPCbPRo3SgxvO1ykOw9P15aeGciMV1EkU-_T2zJA4oluxA69LouOjnaE0FeA9nKFgUHvo2q_19_3RlozdEK7_xTNfTfv9_IHsUAT7zNlm8OFus",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/notifications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"notifications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Notification-app] - Create Notification(Token)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODA3OTM1MzQsImV4cCI6MTY4MDc5NzEzNCwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidGVzdDRAYWJ2LmJnIn0.KK8Q7rt-hf4shRUGGrTkcLwHQeIclmCE2UaF44dzBPB09_3LBYctWbe4pCo2aGIL6m1JnQyK3R4sA2e1Lw5cjOX2n8DIF46SzTOq_IYeAFY9msVTsXdBHyhSMnQQjtLVGXguGyR69O8wkeG6X7wtP1WZS8e1A4ZNVoM3S86A8UTgLRW_DYm2CpgpEhuK9f3AlqY1c-JraFQms0dl1CWgmPZfq-3Wp8stFDoSOWEnl2jOrYdGSCATEBq12OIfh0OKRBx1qdZ17cYZhItcfvWNHMA4Q4Y864gx-4n-NYB5BdUXWzTrHtZyTfGHbL2tygPESCFmriVxl308dRi3YdHUSKhqqGVjnvuDE-PFHZedWL_7rPuJZCL0IC1TtnqhewdMfLCABIAWmN8Jp_whLw3BvQITf_Yoc4TEURafbs_u20KyJToo-YwjAK3oaEKoJNcfJzDTA5Az_5rxsi4986F8UxO5JvveixIXwVyBDxr4nK-xNLHZHTrFU8lcgfQouVgKN5sLsiKkqod7MgF-FchG5y6aceOZzo_fR0MowGFveZtuu4eTt2JhEicBt28KpUaPktaQdyYUGi1Dh-YPbo0s87wlK9sK-wAhXCVKxJXMpyq3NsJyqFhOKzSgrO3521bJmqzjN5vsytZ0LtQ9tD6RTOOMUCErUpwYB1sI3tiaeCc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\": \"Test message from Notification-app\",\r\n    \"recipient\": \"test5@abv.bg\",\r\n    \"type\": \"system\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/notification",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"notification"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Notification-app] - Patch Notification(Token)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODA3OTM1MzQsImV4cCI6MTY4MDc5NzEzNCwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidGVzdDRAYWJ2LmJnIn0.KK8Q7rt-hf4shRUGGrTkcLwHQeIclmCE2UaF44dzBPB09_3LBYctWbe4pCo2aGIL6m1JnQyK3R4sA2e1Lw5cjOX2n8DIF46SzTOq_IYeAFY9msVTsXdBHyhSMnQQjtLVGXguGyR69O8wkeG6X7wtP1WZS8e1A4ZNVoM3S86A8UTgLRW_DYm2CpgpEhuK9f3AlqY1c-JraFQms0dl1CWgmPZfq-3Wp8stFDoSOWEnl2jOrYdGSCATEBq12OIfh0OKRBx1qdZ17cYZhItcfvWNHMA4Q4Y864gx-4n-NYB5BdUXWzTrHtZyTfGHbL2tygPESCFmriVxl308dRi3YdHUSKhqqGVjnvuDE-PFHZedWL_7rPuJZCL0IC1TtnqhewdMfLCABIAWmN8Jp_whLw3BvQITf_Yoc4TEURafbs_u20KyJToo-YwjAK3oaEKoJNcfJzDTA5Az_5rxsi4986F8UxO5JvveixIXwVyBDxr4nK-xNLHZHTrFU8lcgfQouVgKN5sLsiKkqod7MgF-FchG5y6aceOZzo_fR0MowGFveZtuu4eTt2JhEicBt28KpUaPktaQdyYUGi1Dh-YPbo0s87wlK9sK-wAhXCVKxJXMpyq3NsJyqFhOKzSgrO3521bJmqzjN5vsytZ0LtQ9tD6RTOOMUCErUpwYB1sI3tiaeCc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/notification/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"notification",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
