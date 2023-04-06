@@ -32,29 +32,9 @@ class UserController extends  AbstractController
     /**
      * @Route("/api/login", methods={"POST"})
      */
-    public function login(Request $request): Response
+    public function login(): Response
     {
-        // Retrieve user input from request body
-        $input = json_decode($request->getContent(), true);
-        $email = $input['email'];
-        $password = $input['password'];
-
-        // Validate user input
-        if (!$email || !$password) {
-            return new JsonResponse(['error' => 'Invalid input'], Response::HTTP_BAD_REQUEST);
-        }
-
-        // Find user by email
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
-        if (!$user) {
-            return new JsonResponse(['error' => 'Invalid credentials'], Response::HTTP_UNAUTHORIZED);
-        }
-
-        $isPasswordValid = $this->passwordEncoder->isPasswordValid($user, $password);
-        if (!$isPasswordValid) {
-            return new JsonResponse(['error' => 'Invalid credentials'], Response::HTTP_UNAUTHORIZED);
-        }
-
+        $user = $this->getUser();
         // Generate JWT token
         $token = $this->jwtManager->create($user);
 
